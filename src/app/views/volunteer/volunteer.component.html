@@ -1,0 +1,180 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="row">
+              <div class="h3">{{ volunteer.name }}</div>
+            </div>
+            <div class="row">
+              <div class="h4 right-space-10">
+                <i class="text-primary cil-location-pin"></i>
+              </div>
+              <small class="h6 mb-1 text-muted text-uppercase"> {{volunteer.location}}</small>
+            </div>
+            <div></div>
+            <div class="row">
+              <div class="h4 right-space-10">
+                <i class="text-primary cil-envelope-closed"></i>
+              </div>
+              <small class="h6 mb-1 text-muted text-uppercase">{{volunteer.email}}</small>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <img src="assets/img/avatars/9.png" class="img" alt="admin@smartfood.org" />
+            <i class="fad fa-pen fa-lg text-primary" data-fa-transform="down-10"></i>
+          </div>
+          <div class="col-md-3">
+            <div class="card text-primary">
+              <div class="card-header">
+                <h6>Host for 1 year and 2 months</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+          </div>
+          <!--/.col-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-2">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-2">
+            <div class="h2 right-space-10">
+              <i class="text-primary cil-happy"></i>
+            </div>
+          </div>
+          <div class="col-md-10">
+            <!-- needs to change to meals hosted -->
+            <small class="h4 mb-1 text-muted text-uppercase">{{volunteer.mealsHosted}} </small>
+            <br>
+            <small class="h8 mb-1 text-muted text-uppercase">MEALS HOSTED</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-2">
+            <div class="h2 right-space-10">
+              <i class="text-danger cil-running"></i>
+            </div>
+          </div>
+          <div class="col-md-10">
+            <!-- needs to change to number of guests -->
+            <small class="h4 mb-1 text-muted text-uppercase">{{volunteer.numberGuests}} </small>
+            <br>
+            <small class="h8 mb-1 text-muted text-uppercase">No. OF GUESTS</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-2">
+            <div class="h2 right-space-10">
+              <i class="text-info cil-balance-scale"></i>
+            </div>
+          </div>
+          <div class="col-md-10">
+            <!-- needs to change to money saved -->
+            <small class="h4 mb-1 text-muted text-uppercase">${{volunteer.moneySaved}} </small>
+            <br>
+            <small class="h8 mb-1 text-muted text-uppercase">MONEY SAVED</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="h3 text-primary">Past Events:</div>
+</div>
+<div class="row">
+  <ng-container *ngFor="let event of volunteer.pastEvents; let i = index">
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4 bg-primary">
+              <div class="row">
+                <small class="h6 center">{{event.month}}</small>
+              </div>
+              <div class="row">
+                <small class="h6 center">{{event.dd}}</small>
+              </div>
+              <div class="row">
+                <small class="h6 center">{{event.day}}</small>
+              </div>
+            </div>
+            <div class="col-md-8 center">
+              <div class="row">
+                <button type="button" class="btn btn-ghost-primary center">{{event.diningHall.name}}</button>
+              </div>
+              <div class="row">
+                <small class="h6 center text-primary">--></small>
+              </div>
+              <div class="row">
+                <button type="button" class="btn btn-ghost-primary center"
+                  (click)="onGuest(event)">{{event.guest.name}}</button>
+              </div>
+            </div>
+            <!--/.col-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+<div class="row">
+  <div class="h3 text-info">Upcoming Events:</div>
+</div>
+<div class="row">
+  <ng-container *ngFor="let event of volunteer.upcomingEvents; let i = index">
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4 bg-info">
+              <div class="row">
+                <small class="h6 center">{{event.month}}</small>
+              </div>
+              <div class="row">
+                <small class="h6 center">{{event.dd}}</small>
+              </div>
+              <div class="row">
+                <small class="h6 center">{{event.day}}</small>
+              </div>
+            </div>
+            <div class="col-md-8 center">
+              <div class="row">
+                <button type="button" class="btn btn-ghost-info center">{{event.diningHall.name}}</button>
+              </div>
+              <div class="row">
+                <small class="h6 center text-info">--></small>
+              </div>
+              <div class="row">
+                <button type="button" class="btn btn-ghost-info center"
+                  (click)="onGuest(event)">{{event.guest.name}}</button>
+              </div>
+            </div>
+            <!--/.col-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
